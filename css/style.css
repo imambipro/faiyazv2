@@ -381,10 +381,54 @@ h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); line-height: 1.25; }
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
 .reveal.is-visible { opacity: 1; transform: none; }
 
+/* Stagger: delays are set per element by js/main.js and cleared once shown */
+
+/* Intro quote: line-by-line reveal (lines are built by js/main.js) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .intro__quote:not(.is-ready) blockquote,
+  .js .intro__quote:not(.is-ready) cite { opacity: 0; }
+}
+.qline { display: block; opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+.is-in .qline { opacity: 1; transform: none; }
+
+/* Section label accent line: draws left to right on entry */
+.section-head { position: relative; }
+.section-head::after {
+  content: ""; position: absolute; left: 0; bottom: 8px;
+  width: 40px; height: 1px; background: var(--red);
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform 0.8s var(--ease) 0.3s;
+}
+.section-head.is-visible::after { transform: scaleX(1); }
+
+/* Background glows drift very slowly (CSS only) */
+@keyframes drift-a { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(36px, 26px, 0) scale(1.06); } }
+@keyframes drift-b { from { transform: translate3d(0, 0, 0) scale(1.04); } to { transform: translate3d(-30px, 34px, 0) scale(0.97); } }
+.glow { animation: drift-a 26s ease-in-out infinite alternate; will-change: transform; }
+.glow--warm { animation-name: drift-b; animation-duration: 29s; }
+.glow--red { animation-name: drift-a; animation-duration: 23s; animation-direction: alternate-reverse; }
+
+/* Primary buttons: soft red glow follows the cursor (fine pointers only) */
+@media (hover: hover) and (pointer: fine) {
+  .btn--primary { position: relative; isolation: isolate; overflow: hidden; }
+  .btn--primary::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(110px circle at var(--mx, 50%) var(--my, 50%), rgba(236, 84, 92, 0.55), transparent 70%);
+    opacity: 0; transition: opacity 0.3s var(--ease);
+  }
+  .btn--primary:hover::before { opacity: 1; }
+}
+
+/* Page transition: 300ms fade in on load, fade out on internal navigation */
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+body { animation: page-in 0.3s ease-out; }
+html.is-leaving body { opacity: 0; transition: opacity 0.3s ease-in; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal, .qline { opacity: 1; transform: none; }
+  .section-head::after { transform: none; }
   .intro__media { transform: none; }
   .intro { opacity: 1; }
 }

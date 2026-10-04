@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -55,7 +56,7 @@
     <div class="intro__shade"></div>
     <div class="intro__content">
       <div class="container">
-        <figure class="intro__quote glass">
+        <figure class="intro__quote glass" id="intro-quote">
           <!-- PLACEHOLDER -->
           <blockquote>“A nation is measured not by how it treats its majority, but by what it lets happen to its few.”</blockquote>
           <figcaption><cite class="eyebrow eyebrow--red">— S M Faiyaz Hossain</cite></figcaption>
@@ -93,12 +94,12 @@
           <!-- PLACEHOLDER -->
           <div class="strip__bar glass">
             <span class="eyebrow strip__label">As seen in</span>
-            <ul style="display:contents">
-              <li>The Daily Ledger</li>
-              <li>South Asia Review</li>
-              <li>Pacific Current</li>
-              <li>The Policy Desk</li>
-              <li>Asia Voices Radio</li>
+            <ul style="display:contents" data-stagger>
+              <li class="reveal">The Daily Ledger</li>
+              <li class="reveal">South Asia Review</li>
+              <li class="reveal">Pacific Current</li>
+              <li class="reveal">The Policy Desk</li>
+              <li class="reveal">Asia Voices Radio</li>
             </ul>
           </div>
         </div>
@@ -138,7 +139,7 @@
           <div class="section-head reveal">
             <span class="tag glass eyebrow">02 — From the Site</span>
           </div>
-          <div class="cards">
+          <div class="cards" data-stagger>
             <!-- PLACEHOLDER -->
             <a class="card glass reveal" href="writings.html">
               <div class="card__meta"><span class="card__label eyebrow">Latest Essay</span></div>
