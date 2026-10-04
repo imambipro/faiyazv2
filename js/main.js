@@ -192,6 +192,40 @@
     });
   }
 
+  /* Insights: filter chips ------------------------------------------------ */
+  var chips = document.querySelectorAll(".chip[data-filter]");
+  if (chips.length) {
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var f = chip.getAttribute("data-filter");
+        chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+        document.querySelectorAll("#posts .card").forEach(function (card) {
+          var show = f === "All" || card.getAttribute("data-tag") === f;
+          card.hidden = !show;
+          if (show) card.classList.add("is-visible");
+        });
+      });
+    });
+  }
+
+  /* Contact: front-end only submit ---------------------------------------- */
+  var form = document.getElementById("contact-form");
+  if (form) {
+    var note = document.getElementById("form-note");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var ok = true, first = null;
+      form.querySelectorAll("[required]").forEach(function (f) {
+        var bad = !f.value.trim() || (f.type === "email" && !/^\S+@\S+\.\S+$/.test(f.value));
+        f.setAttribute("aria-invalid", bad ? "true" : "false");
+        if (bad) { ok = false; first = first || f; }
+      });
+      if (!ok) { note.hidden = true; first.focus(); return; }
+      form.reset();
+      note.hidden = false;
+    });
+  }
+
   /* Missing-image placeholder --------------------------------------------- */
   function placeholder(img) {
     if (img.dataset.phDone) return;
