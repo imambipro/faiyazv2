@@ -6,8 +6,8 @@
 
 /* 1. Tokens ---------------------------------------------------------------- */
 :root {
-  --bg: #141416;
-  --bg-raised: #1b1b1e;
+  --bg: #0e0e10;
+  --bg-raised: #141416;
   --text: #e9e6e1;
   --text-muted: #9a968f;
   --red: #b3262e;
@@ -92,12 +92,12 @@ h1, h2, h3, p, blockquote, figure { margin: 0; }
   position: absolute; z-index: -1; pointer-events: none;
   width: min(60vw, 640px); aspect-ratio: 1;
   border-radius: 38%;
-  filter: blur(90px);
-  opacity: 0.16;
+  filter: blur(130px);
+  opacity: 0.11;
   background: radial-gradient(closest-side, #d8d2c8, transparent);
 }
-.glow--warm { opacity: 0.12; background: radial-gradient(closest-side, #a9a39a, transparent); }
-.glow--red { opacity: 0.1; background: radial-gradient(closest-side, var(--red), transparent); }
+.glow--warm { opacity: 0.08; background: radial-gradient(closest-side, #a9a39a, transparent); }
+.glow--red { opacity: 0.07; background: radial-gradient(closest-side, var(--red), transparent); }
 
 /* 4. Buttons --------------------------------------------------------------- */
 .btn {
@@ -211,7 +211,7 @@ h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); line-height: 1.25; }
 
 /* Scrolled state: glass bar */
 .site-header.is-solid {
-  background: rgba(20, 20, 22, 0.55);
+  background: rgba(14, 14, 16, 0.6);
   backdrop-filter: blur(16px) saturate(110%);
   -webkit-backdrop-filter: blur(16px) saturate(110%);
   border-bottom-color: rgba(255, 255, 255, 0.14);
@@ -252,8 +252,8 @@ h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); line-height: 1.25; }
 .intro__shade {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to top, rgba(20, 20, 22, 0.92) 0%, rgba(20, 20, 22, 0.55) 38%, rgba(20, 20, 22, 0) 70%),
-    linear-gradient(to right, rgba(20, 20, 22, 0.8) 0%, rgba(20, 20, 22, 0.3) 45%, rgba(20, 20, 22, 0) 75%);
+    linear-gradient(to top, rgba(14, 14, 16, 0.97) 0%, rgba(14, 14, 16, 0.85) 30%, rgba(14, 14, 16, 0.5) 58%, rgba(14, 14, 16, 0) 88%),
+    linear-gradient(to right, rgba(14, 14, 16, 0.92) 0%, rgba(14, 14, 16, 0.55) 45%, rgba(14, 14, 16, 0) 85%);
 }
 .intro__content {
   position: absolute; left: 0; right: 0; bottom: 0;
@@ -289,7 +289,7 @@ h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); line-height: 1.25; }
 /* Placeholder shown by js/main.js when an image file is missing */
 .ph {
   display: flex; align-items: center; justify-content: center; text-align: center;
-  background: #1f1f23; color: var(--text-muted);
+  background: #19191c; color: var(--text-muted);
   border-radius: var(--radius); font-size: 0.75rem; letter-spacing: 0.04em;
   padding: 12px; min-height: 120px;
 }
