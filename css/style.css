@@ -211,7 +211,7 @@ h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); line-height: 1.25; }
 
 /* Scrolled state: glass bar */
 .site-header.is-solid {
-  background: rgba(14, 14, 16, 0.6);
+  background: rgba(14, 14, 16, 0.98);
   backdrop-filter: blur(16px) saturate(110%);
   -webkit-backdrop-filter: blur(16px) saturate(110%);
   border-bottom-color: rgba(255, 255, 255, 0.14);
@@ -424,11 +424,6 @@ h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); line-height: 1.25; }
 .side .mail:hover { color: var(--red-hover); }
 .side p { margin: 0; color: var(--text-muted); }
 @media (min-width: 820px) { .contact { grid-template-columns: 1.5fr 1fr; gap: 32px; } }
-
-/* Fix: on inner pages, scrolling content must not show through the logo area (desktop) */
-@media (min-width: 960px) {
-  body:has(.page-head) .site-header.is-solid { background: rgba(14, 14, 16, 0.95); }
-}
 
 /* Fix: lighter intro shade on phones so the portrait stays visible */
 @media (max-width: 767px) {
